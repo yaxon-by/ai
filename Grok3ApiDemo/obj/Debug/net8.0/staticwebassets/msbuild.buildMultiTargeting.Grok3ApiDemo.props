@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Grok3ApiDemo.props" />
+</Project>
