@@ -1,14 +1,11 @@
-using System.Net.Http.Json;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add HttpClient as a service
 builder.Services.AddHttpClient("Grok3Client", client =>
 {
     client.BaseAddress = new Uri("https://api.x.ai/v1/");
-    // Add your API key here
-    client.DefaultRequestHeaders.Add("Authorization", "Bearer YOUR_XAI_API_KEY");
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["Grok3ApiKey"]}");
 });
 
 var app = builder.Build();
