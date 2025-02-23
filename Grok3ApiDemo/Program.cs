@@ -28,6 +28,9 @@ app.MapGet("/ask-grok", async (IHttpClientFactory clientFactory) =>
     try
     {
         var response = await client.PostAsJsonAsync("chat/completions", requestPayload);
+        
+        var responseString = await response.Content.ReadAsStringAsync();
+        
         response.EnsureSuccessStatusCode();
 
         var result = await response.Content.ReadFromJsonAsync<JsonElement>();
